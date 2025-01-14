@@ -305,7 +305,20 @@ Crie um array como [4, -3, 2, -1, 0].
 Use um loop para verificar cada número.
 Substitua os números negativos por 0 e exiba o array no console.
 */
+const nonNegativeFun = (num) => {
+    if(!Array.isArray(num)){
+        console.log('Insira um array')
+        return
+    }
 
+    for(let i = 0; i < num.length; i++){
+        if(isNotType(num[i], 'number'))return
+
+        if(num[i] < 0 )
+            num[i] = 0
+    }
+    console.log(...num)
+}
 /*
 14. Verificar Palavras Proibidas em um Texto
 Descrição:
@@ -315,7 +328,31 @@ Crie um array de palavras proibidas como ['palavra1', 'palavra2'].
 Peça ao usuário uma frase.
 Verifique se a frase contém alguma palavra do array e exiba uma mensagem de alerta.
 */
+/**
+ * 
+ * @param {string[]} word 
+ * @param {string} frase
+ * @returns 
+ */
+const proibidaoFun = (word, frase) => {
+    if(!Array.isArray(word)){
+        console.log('Insira um array')
+        return
+    }
 
+    const lower = frase.toLowerCase()
+
+    word.forEach(str => {
+        str = str.toLowerCase()
+
+        if(isNotType(str, 'string')){
+            console.log('Array deve conter apenas strings')
+            return
+        }
+        if(lower.includes(str))
+            console.log(`Palavra proibida "${str}" encontrada`)
+    })
+}
 /*
 15. Gerar uma Lista de Números Pares
 Descrição:
@@ -324,3 +361,11 @@ Tarefas:
 Use um loop para gerar os números pares.
 Adicione os números a um array e exiba-o no console.
 */
+const listEvenFun = () => {
+
+    const arr = Array.from(
+        { length: 10 },
+        (_, i) => 2 * (i + 1)
+    )
+    console.log(...arr)
+}
